@@ -23,7 +23,7 @@ interface dataProps {
 
 export default function Home({ data }: dataProps) {
   return (
-    <div className={`${geistSans.variable} ${geistMono.variable} mt-8 `}>
+    <div className={`${geistSans.variable} ${geistMono.variable} `}>
       {data.map((item) => (
         <p key={item.id}>
           <Link href={`/productDetail/${item.id}`}>
@@ -39,5 +39,5 @@ export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/comments")
   const data = await res.json()
 
-  return { props: { data }, revalidate: 5 }
+  return { props: { data }, revalidate: 3 }
 }
