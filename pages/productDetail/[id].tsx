@@ -4,10 +4,16 @@ import { GetServerSideProps } from "next"
 type dataItems = {
   id: number
   name: string
+  body: string
 }
 
 const ProductDetail = ({ data }: { data: dataItems }) => {
-  return <div>{data?.name}</div>
+  return (
+    <div>
+      <h1>{data?.name}</h1>
+      <div>{data?.body}</div>
+    </div>
+  )
 }
 
 export default ProductDetail
