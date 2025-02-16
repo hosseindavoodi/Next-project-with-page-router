@@ -36,8 +36,17 @@ export default function Home({ data }: dataProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/comments")
-  const data = await res.json()
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/comments")
+    const data = await res.json()
 
-  return { props: { data }, revalidate: 3 }
+    if (!res.ok) {
+      console.log("Something is wrong")
+    }
+
+    return { props: { data } }
+  } catch (error) {
+    console.log(error)
+    return { props: [] }
+  }
 }
